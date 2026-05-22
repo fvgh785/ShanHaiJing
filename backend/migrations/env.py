@@ -1,18 +1,11 @@
-import os
-from logging.config import fileConfig
+import logging
 from alembic import context
 from app import create_app
 from app.models import db
 
-config = context.config
+logging.basicConfig(level=logging.WARNING)
 
-# fileConfig reads logging setup from alembic.ini; flask db may
-# resolve the ini path differently, so check both common locations
-_ini_path = config.config_file_name
-if _ini_path and os.path.exists(_ini_path):
-    fileConfig(_ini_path)
-elif os.path.exists("alembic.ini"):
-    fileConfig("alembic.ini")
+config = context.config
 
 app = create_app()
 target_metadata = db.metadata
