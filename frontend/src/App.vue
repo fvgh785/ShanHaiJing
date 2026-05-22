@@ -101,13 +101,27 @@ const themeOverrides = {
 </script>
 
 <style>
-body {
+html, body {
   margin: 0;
+  padding: 0;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+#app {
+  height: 100%;
 }
 
 .app-layout {
   height: 100vh;
+  display: flex;
+}
+
+.app-layout .n-layout {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .logo-wrapper {
@@ -139,6 +153,7 @@ body {
   height: 56px;
   flex-wrap: wrap;
   gap: 12px;
+  flex-shrink: 0;
 }
 
 .header-left {
@@ -157,7 +172,47 @@ body {
   padding: 16px;
   overflow-y: auto;
   background: #f5f5f5;
-  min-height: calc(100vh - 56px);
+  height: calc(100vh - 56px);
   box-sizing: border-box;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
+  
+  .app-layout .n-layout-sider {
+    width: 100% !important;
+    height: auto !important;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .app-layout .n-layout {
+    flex: 1;
+  }
+  
+  .app-content {
+    height: calc(100vh - 56px - 48px);
+    padding: 12px;
+  }
+  
+  .logo-wrapper {
+    height: 48px;
+    padding: 0 8px;
+  }
+  
+  .logo-icon {
+    font-size: 20px;
+  }
+  
+  .logo-text {
+    font-size: 16px;
+  }
+  
+  .app-header {
+    height: 48px;
+    padding: 0 12px;
+  }
 }
 </style>
