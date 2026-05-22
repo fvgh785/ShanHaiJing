@@ -137,6 +137,8 @@ body {
   justify-content: space-between;
   padding: 0 16px;
   height: 56px;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .header-left {
@@ -148,12 +150,14 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .app-content {
-  padding: 24px;
+  padding: 16px;
   overflow-y: auto;
   background: #f5f5f5;
   min-height: calc(100vh - 56px);
+  box-sizing: border-box;
 }
 </style>

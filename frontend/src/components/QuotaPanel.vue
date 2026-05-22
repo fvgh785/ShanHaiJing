@@ -104,30 +104,33 @@ onMounted(loadQuotas)
 <style scoped>
 .quota-panel {
   margin-bottom: 16px;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .quota-item {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .quota-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  align-items: center;
 }
 
 .quota-label {
-  font-size: 13px;
+  font-size: 14px;
   color: #666;
 }
 
 .quota-value {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
 }
 
 .update-btn {
-  margin-top: 8px;
+  margin-top: 12px;
   width: 100%;
 }
 </style>

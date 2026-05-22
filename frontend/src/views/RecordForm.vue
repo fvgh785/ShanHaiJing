@@ -432,16 +432,20 @@ onMounted(async () => {
 
 <style scoped>
 .record-form-page {
-  max-width: 900px;
+  max-width: 100%;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .page-header {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .page-title {
   margin: 0;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .form-steps {
@@ -449,15 +453,19 @@ onMounted(async () => {
 }
 
 .step-content {
-  margin-top: 24px;
+  margin-top: 20px;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .step-actions {
   display: flex;
   justify-content: space-between;
-  margin-top: 24px;
+  margin-top: 20px;
   padding-top: 16px;
   border-top: 1px solid #eee;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .generated-prompts {

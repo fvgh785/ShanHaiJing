@@ -228,3 +228,128 @@ WHERE plans.id = ?]
 [2026-05-21 22:27:52,618] INFO in __init__: ShanHaiJing backend starting
 [2026-05-22 09:10:06,066] INFO in __init__: ShanHaiJing backend starting
 [2026-05-22 09:15:30,217] INFO in __init__: ShanHaiJing backend starting
+[2026-05-22 16:08:19,729] INFO in __init__: ShanHaiJing backend starting
+[2026-05-22 16:09:25,978] INFO in __init__: ShanHaiJing backend starting
+[2026-05-22 16:10:22,364] INFO in __init__: ShanHaiJing backend starting
+[2026-05-22 16:11:36,299] ERROR in app: Exception on /api/v1/health [GET]
+Traceback (most recent call last):
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\work_soft\Python38\lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\workspaces\workspaces-AI\ShanHaiJing\backend\app\__init__.py", line 101, in health
+    return jsonify(health_status)
+NameError: name 'jsonify' is not defined
+[2026-05-22 16:12:51,639] INFO in __init__: ShanHaiJing backend starting
+[2026-05-22 16:13:25,640] ERROR in app: Exception on /api/v1/health [GET]
+Traceback (most recent call last):
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\work_soft\Python38\lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\workspaces\workspaces-AI\ShanHaiJing\backend\app\__init__.py", line 101, in health
+    return jsonify(health_status)
+NameError: name 'jsonify' is not defined
+[2026-05-22 16:13:48,855] INFO in __init__: ShanHaiJing backend starting
+[2026-05-22 16:14:16,021] ERROR in app: Exception on /api/v1/health [GET]
+Traceback (most recent call last):
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\work_soft\Python38\lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\workspaces\workspaces-AI\ShanHaiJing\backend\app\__init__.py", line 101, in health
+    return jsonify(health_status)
+NameError: name 'jsonify' is not defined
+[2026-05-22 16:20:35,921] INFO in __init__: ShanHaiJing backend starting
+[2026-05-22 16:24:34,212] ERROR in app: Exception on /api/v1/health [GET]
+Traceback (most recent call last):
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\work_soft\Python38\lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\workspaces\workspaces-AI\ShanHaiJing\backend\app\__init__.py", line 101, in health
+NameError: name 'jsonify' is not defined
+[2026-05-22 16:25:47,450] INFO in __init__: ShanHaiJing backend starting
+[2026-05-22 16:26:06,004] ERROR in app: Exception on /api/v1/health [GET]
+Traceback (most recent call last):
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\work_soft\Python38\lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\workspaces\workspaces-AI\ShanHaiJing\backend\app\__init__.py", line 101, in health
+NameError: name 'jsonify' is not defined
+[2026-05-22 16:26:40,653] INFO in __init__: ShanHaiJing backend starting
+[2026-05-22 16:27:00,999] ERROR in app: Exception on /api/v1/health [GET]
+Traceback (most recent call last):
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\work_soft\Python38\lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\workspaces\workspaces-AI\ShanHaiJing\backend\app\__init__.py", line 101, in health
+NameError: name 'jsonify' is not defined
+[2026-05-22 16:30:22,588] INFO in __init__: ShanHaiJing backend starting
+[2026-05-22 16:31:57,404] ERROR in app: Exception on /api/v1/health [GET]
+Traceback (most recent call last):
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\work_soft\Python38\lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\workspaces\workspaces-AI\ShanHaiJing\backend\app\__init__.py", line 101, in health
+NameError: name 'jsonify' is not defined
+[2026-05-22 16:44:21,705] INFO in __init__: ShanHaiJing backend starting
+[2026-05-22 16:44:47,881] ERROR in app: Exception on /api/v1/health [GET]
+Traceback (most recent call last):
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\work_soft\Python38\lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\workspaces\workspaces-AI\ShanHaiJing\backend\app\__init__.py", line 101, in health
+NameError: name 'jsonify' is not defined

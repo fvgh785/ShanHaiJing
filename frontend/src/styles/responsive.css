@@ -1,0 +1,201 @@
+/* 全局响应式样式 */
+
+/* 移动端断点 */
+@media (max-width: 768px) {
+  /* 通用容器样式 */
+  .container {
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+  
+  /* 页面标题 */
+  .page-title {
+    font-size: 18px !important;
+  }
+  
+  /* 间距调整 */
+  .mb-24 {
+    margin-bottom: 16px !important;
+  }
+  
+  .mt-24 {
+    margin-top: 16px !important;
+  }
+  
+  /* 按钮组响应式 */
+  .button-group {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  
+  .button-group .n-button {
+    width: 100% !important;
+  }
+  
+  /* 表单响应式 */
+  .form-steps {
+    margin-bottom: 16px !important;
+  }
+  
+  .step-content {
+    margin-top: 16px !important;
+  }
+  
+  /* 卡片响应式 */
+  .chart-card {
+    margin-bottom: 12px !important;
+  }
+  
+  /* 统计数据响应式 */
+  .stats-row {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  
+  .stat-item {
+    width: 100% !important;
+  }
+  
+  /* 任务列表响应式 */
+  .task-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+  
+  .task-item .n-button {
+    width: 100% !important;
+    align-self: stretch !important;
+  }
+  
+  /* 数据表格响应式 */
+  .records-table {
+    overflow-x: auto !important;
+  }
+  
+  .records-table .n-data-table {
+    min-width: 600px !important;
+  }
+  
+  /* 进度条响应式 */
+  .progress-item {
+    margin-bottom: 12px !important;
+  }
+  
+  /* 热力图响应式 */
+  .heatmap-row {
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+  }
+  
+  .heatmap-cell {
+    flex-shrink: 0 !important;
+  }
+  
+  /* 趋势图响应式 */
+  .trend-item {
+    flex: 1 1 45px !important;
+  }
+  
+  .score-trend {
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+  }
+  
+  .score-dot {
+    flex-shrink: 0 !important;
+  }
+}
+
+/* 平板端断点 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+  
+  .chart-card {
+    flex: 1 1 calc(50% - 8px);
+    max-width: calc(50% - 8px);
+  }
+  
+  .stats-row {
+    gap: 16px;
+  }
+  
+  .task-item {
+    padding: 14px 16px;
+  }
+}
+
+/* 桌面端断点 */
+@media (min-width: 1025px) {
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  
+  .chart-card {
+    flex: 1 1 30%;
+    max-width: 30%;
+  }
+  
+  .stats-row {
+    gap: 24px;
+  }
+  
+  .task-item {
+    padding: 16px 20px;
+  }
+}
+
+/* 通用响应式工具类 */
+.text-responsive {
+  font-size: clamp(14px, 2vw, 16px);
+}
+
+.hide-mobile {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+.show-mobile {
+  @media (max-width: 768px) {
+    display: block !important;
+  }
+  
+  @media (min-width: 769px) {
+    display: none !important;
+  }
+}
+
+.flex-wrap-responsive {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.w-full-mobile {
+  @media (max-width: 768px) {
+    width: 100% !important;
+  }
+}
+
+.max-w-full {
+  max-width: 100% !important;
+}
+
+.p-responsive {
+  padding: 12px 16px;
+  box-sizing: border-box;
+}
+
+.mt-responsive {
+  margin-top: 16px;
+}
+
+.mb-responsive {
+  margin-bottom: 16px;
+}

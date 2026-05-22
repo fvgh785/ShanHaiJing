@@ -84,11 +84,14 @@ function getScoreColor(score) {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .chart-card {
-  flex: 1;
-  min-width: 240px;
+  flex: 1 1 100%;
+  min-width: 100%;
+  max-width: 100%;
 }
 
 .tool-bar-item {
@@ -106,11 +109,13 @@ function getScoreColor(score) {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  justify-content: space-between;
 }
 
 .trend-item {
   text-align: center;
-  min-width: 50px;
+  min-width: 45px;
+  flex: 1;
 }
 
 .trend-date {
@@ -127,6 +132,7 @@ function getScoreColor(score) {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  justify-content: space-between;
 }
 
 .score-dot {
@@ -140,5 +146,6 @@ function getScoreColor(score) {
   font-weight: 600;
   color: #fff;
   cursor: default;
+  flex-shrink: 0;
 }
 </style>

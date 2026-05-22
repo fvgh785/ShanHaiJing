@@ -58,6 +58,8 @@ function getColor(count) {
 <style scoped>
 .heatmap-wrapper {
   margin-top: 16px;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .heatmap-label {
@@ -79,6 +81,7 @@ function getColor(count) {
   align-items: center;
   justify-content: center;
   cursor: default;
+  flex-shrink: 0;
 }
 
 .heatmap-count {
@@ -94,6 +97,8 @@ function getColor(count) {
   margin-top: 8px;
   font-size: 11px;
   color: #999;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .legend-swatch {

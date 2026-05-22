@@ -125,37 +125,42 @@ onMounted(async () => {
 
 <style scoped>
 .dashboard {
-  max-width: 1400px;
+  max-width: 100%;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
   gap: 12px;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .page-title {
   margin: 0 0 4px 0;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .dashboard-grid {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
 .main-col {
-  flex: 2;
-  min-width: 300px;
+  flex: 1;
+  min-width: 100%;
 }
 
 .side-col {
   flex: 1;
-  min-width: 280px;
+  min-width: 100%;
+  margin-top: 16px;
 }
 
 .stats-card {
@@ -164,7 +169,8 @@ onMounted(async () => {
 
 .stats-row {
   display: flex;
-  gap: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .stat-item {
@@ -185,16 +191,17 @@ onMounted(async () => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 12px;
+  padding: 12px 16px;
   background: #fafafa;
   border-radius: 8px;
   border: 1px solid #eee;
+  margin-bottom: 8px;
 }
 
 .task-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .task-meta {

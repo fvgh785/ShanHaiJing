@@ -11,33 +11,33 @@
           v-model:formatted-value="filters.dateRange"
           type="daterange"
           clearable
-          style="width: 240px"
+          style="width: 100%; max-width: 240px;"
         />
         <n-input
           v-model:value="filters.creature_name"
           placeholder="搜索异兽名称"
           clearable
-          style="width: 160px"
+          style="width: 100%; max-width: 160px;"
         />
         <n-select
           v-model:value="filters.tool"
           :options="toolFilterOptions"
           placeholder="工具"
           clearable
-          style="width: 120px"
+          style="width: 100%; max-width: 120px;"
         />
         <n-select
           v-model:value="filters.status"
           :options="statusFilterOptions"
           placeholder="状态"
           clearable
-          style="width: 120px"
+          style="width: 100%; max-width: 120px;"
         />
         <n-input
           v-model:value="filters.juan"
           placeholder="卷名"
           clearable
-          style="width: 120px"
+          style="width: 100%; max-width: 120px;"
         />
         <n-button type="primary" @click="doSearch">搜索</n-button>
         <n-button @click="resetFilters">重置</n-button>
@@ -218,7 +218,9 @@ onMounted(loadData)
 
 <style scoped>
 .records-page {
-  max-width: 1400px;
+  max-width: 100%;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .page-header {
@@ -228,18 +230,24 @@ onMounted(loadData)
   margin-bottom: 16px;
   flex-wrap: wrap;
   gap: 12px;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .page-title {
   margin: 0;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .filter-card {
   margin-bottom: 16px;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .records-table {
   margin-top: 8px;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 </style>

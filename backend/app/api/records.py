@@ -3,6 +3,8 @@ from datetime import date
 from flask import Blueprint, request, jsonify
 from app.models import db, Plan, Record, HermesLog
 from app.services.scheduler import auto_complete_plan
+from app.decorators import api_response, validate_data, handle_database_errors
+from app.exceptions import NotFoundException, ValidationException
 
 records_bp = Blueprint("records", __name__)
 
@@ -32,6 +34,8 @@ def _serialize_record(record):
 
 
 @records_bp.route("", methods=["GET"])
+@api_response(message="Records retrieved successfully")
+@handle_database_errors
 def list_records():
     query = Record.query
 
@@ -44,14 +48,16 @@ def list_records():
         try:
             query = query.filter(Record.work_date >= date.fromisoformat(work_date_from))
         except ValueError:
-            return jsonify({"error": {"code": "BAD_REQUEST", "message": "Invalid work_date_from format, use YYYY-MM-DD"}}), 400
+            from app.exceptions import BadRequestException
+            raise BadRequestException("Invalid work_date_from format, use YYYY-MM-DD")
 
     work_date_to = request.args.get("work_date_to")
     if work_date_to:
         try:
             query = query.filter(Record.work_date <= date.fromisoformat(work_date_to))
         except ValueError:
-            return jsonify({"error": {"code": "BAD_REQUEST", "message": "Invalid work_date_to format, use YYYY-MM-DD"}}), 400
+            from app.exceptions import BadRequestException
+            raise BadRequestException("Invalid work_date_to format, use YYYY-MM-DD")
 
     status = request.args.get("status")
     if status:
@@ -79,14 +85,19 @@ def list_records():
 
 
 @records_bp.route("", methods=["POST"])
+@api_response(message="Record created successfully")
+@validate_data({
+    'required': ['creature_name'],
+    'types': {
+        'creature_name': 'string',
+        'plan_id': 'integer',
+        'work_date': 'string',
+        'tools_used': 'array'
+    }
+})
+@handle_database_errors
 def create_record():
-    data = request.get_json(silent=True)
-    if not data:
-        return jsonify({"error": {"code": "BAD_REQUEST", "message": "Request body is required"}}), 400
-
-    creature_name = data.get("creature_name")
-    if not creature_name:
-        return jsonify({"error": {"code": "BAD_REQUEST", "message": "creature_name is required"}}), 400
+    data = request.get_json()
 
     work_date_str = data.get("work_date", date.today().isoformat())
     try:
@@ -153,14 +164,32 @@ def get_record(record_id):
 
 
 @records_bp.route("/<int:record_id>", methods=["PUT"])
+@api_response(message="Record updated successfully")
+@validate_data({
+    'types': {
+        'plan_id': 'integer',
+        'creature_name': 'string',
+        'work_date': 'string',
+        'tools_used': 'array',
+        'baseline_id_used': 'integer',
+        'prompt_image': 'string',
+        'prompt_video': 'string',
+        'negative_prompt': 'string',
+        'style_review_score': 'integer',
+        'style_review_suggestions': 'string',
+        'points_consumed': 'integer',
+        'output_url': 'string',
+        'intermediate_urls': 'array',
+        'notes': 'string'
+    }
+})
+@handle_database_errors
 def update_record(record_id):
     record = db.session.get(Record, record_id)
     if not record:
-        return jsonify({"error": {"code": "NOT_FOUND", "message": f"Record {record_id} not found"}}), 404
+        raise NotFoundException(f"Record {record_id} not found")
 
-    data = request.get_json(silent=True)
-    if not data:
-        return jsonify({"error": {"code": "BAD_REQUEST", "message": "Request body is required"}}), 400
+    data = request.get_json()
 
     if "plan_id" in data:
         record.plan_id = data["plan_id"]
@@ -170,7 +199,8 @@ def update_record(record_id):
         try:
             record.work_date = date.fromisoformat(data["work_date"])
         except (ValueError, TypeError):
-            return jsonify({"error": {"code": "BAD_REQUEST", "message": "Invalid work_date format"}}), 400
+            from app.exceptions import BadRequestException
+            raise BadRequestException("Invalid work_date format")
     if "tools_used" in data:
         record.tools_used = json.dumps(data["tools_used"]) if isinstance(data["tools_used"], list) else data["tools_used"]
     if "baseline_id_used" in data:
