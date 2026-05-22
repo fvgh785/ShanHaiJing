@@ -218,7 +218,8 @@ onMounted(loadData)
 
 <style scoped>
 .records-page {
-  max-width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 0 16px;
   box-sizing: border-box;
 }
@@ -230,8 +231,6 @@ onMounted(loadData)
   margin-bottom: 16px;
   flex-wrap: wrap;
   gap: 12px;
-  padding: 0 16px;
-  box-sizing: border-box;
 }
 
 .page-title {
@@ -241,13 +240,25 @@ onMounted(loadData)
 
 .filter-card {
   margin-bottom: 16px;
-  padding: 0 16px;
-  box-sizing: border-box;
+  padding: 0;
 }
 
 .records-table {
   margin-top: 8px;
-  padding: 0 16px;
-  box-sizing: border-box;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .records-page {
+    padding: 0 12px;
+  }
+  
+  .filter-card {
+    margin-bottom: 12px;
+  }
+  
+  .records-table {
+    margin-top: 8px;
+  }
 }
 </style>

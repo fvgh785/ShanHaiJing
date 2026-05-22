@@ -125,7 +125,8 @@ onMounted(async () => {
 
 <style scoped>
 .dashboard {
-  max-width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 0 16px;
   box-sizing: border-box;
 }
@@ -137,8 +138,6 @@ onMounted(async () => {
   margin-bottom: 20px;
   flex-wrap: wrap;
   gap: 12px;
-  padding: 0 16px;
-  box-sizing: border-box;
 }
 
 .page-title {
@@ -153,18 +152,42 @@ onMounted(async () => {
 }
 
 .main-col {
-  flex: 1;
-  min-width: 100%;
+  flex: 2;
+  min-width: 300px;
 }
 
 .side-col {
   flex: 1;
-  min-width: 100%;
-  margin-top: 16px;
+  min-width: 300px;
+  margin-top: 0;
+}
+
+@media (max-width: 1024px) {
+  .main-col,
+  .side-col {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+  .side-col {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    gap: 12px;
+  }
 }
 
 .stats-card {
   margin-bottom: 16px;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .stats-card {
+    margin-bottom: 12px;
+  }
 }
 
 .stats-row {
@@ -179,6 +202,13 @@ onMounted(async () => {
 
 .tasks-card {
   margin-top: 16px;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .tasks-card {
+    margin-top: 12px;
+  }
 }
 
 .task-list {

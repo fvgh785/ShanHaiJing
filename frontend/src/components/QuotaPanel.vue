@@ -104,12 +104,23 @@ onMounted(loadQuotas)
 <style scoped>
 .quota-panel {
   margin-bottom: 16px;
-  padding: 0 16px;
-  box-sizing: border-box;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .quota-panel {
+    margin-bottom: 12px;
+  }
 }
 
 .quota-item {
   margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .quota-item {
+    margin-bottom: 12px;
+  }
 }
 
 .quota-header {

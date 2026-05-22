@@ -242,6 +242,9 @@ onMounted(loadPlans)
 <style scoped>
 .plans-page {
   max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .page-header {
@@ -256,5 +259,19 @@ onMounted(loadPlans)
 .page-title {
   margin: 0;
   font-size: 22px;
+}
+
+@media (max-width: 768px) {
+  .plans-page {
+    padding: 0 12px;
+  }
+  
+  .page-header {
+    margin-bottom: 16px;
+  }
+  
+  .page-title {
+    font-size: 20px;
+  }
 }
 </style>
