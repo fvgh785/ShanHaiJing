@@ -97,19 +97,17 @@ def upgrade():
         op.create_index('idx_records_date', 'records', ['work_date'])
         op.create_index('idx_records_status', 'records', ['status'])
 
-    # FK from harmony_baselines.source_record_id → records.id
-    if not _table_exists('records'):
-        pass  # fk added when records table is created above
-    else:
-        # Check if FK already exists; only add if missing
-        insp = inspect(op.get_bind())
-        fks = insp.get_foreign_keys('harmony_baselines')
-        if not any(fk['referred_table'] == 'records' for fk in fks):
-            op.create_foreign_key(
-                'fk_harmony_baselines_source_record_id',
-                'harmony_baselines', 'records',
-                ['source_record_id'], ['id']
-            )
+    # FK harmony_baselines.source_record_id → records.id.
+    # Only possible when both tables are created fresh in this run;
+    # SQLite cannot ALTER existing tables to add constraints. If
+    # harmony_baselines survived a prior partial migration, the FK
+    # is left missing (the ORM relationship still works without it).
+    if not _table_exists('harmony_baselines') and not _table_exists('records'):
+        op.create_foreign_key(
+            'fk_harmony_baselines_source_record_id',
+            'harmony_baselines', 'records',
+            ['source_record_id'], ['id']
+        )
 
     if not _table_exists('hermes_logs'):
         op.create_table('hermes_logs',
