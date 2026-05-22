@@ -218,9 +218,9 @@ onMounted(loadData)
 
 <style scoped>
 .records-page {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 16px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -228,9 +228,10 @@ onMounted(loadData)
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
   gap: 12px;
+  padding: 0 8px;
 }
 
 .page-title {
@@ -250,11 +251,16 @@ onMounted(loadData)
 
 @media (max-width: 768px) {
   .records-page {
-    padding: 0 12px;
+    padding: 0 8px;
+  }
+  
+  .page-header {
+    margin-bottom: 16px;
   }
   
   .filter-card {
     margin-bottom: 12px;
+    padding: 0 8px;
   }
   
   .records-table {

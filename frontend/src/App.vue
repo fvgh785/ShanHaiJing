@@ -3,8 +3,9 @@
     <n-message-provider>
       <n-dialog-provider>
         <n-notification-provider>
-          <n-layout class="app-layout">
-            <n-layout-sider bordered collapse-mode="width" :collapsed-width="64" :width="200" :collapsed="collapsed">
+          <div class="app-container">
+            <!-- 左侧导航栏 -->
+            <div class="sidebar" :class="{ 'sidebar-collapsed': collapsed }">
               <div class="logo-wrapper">
                 <div class="logo-icon">🐉</div>
                 <span v-show="!collapsed" class="logo-text">山海经</span>
@@ -16,9 +17,11 @@
                 :options="menuOptions"
                 @update:value="handleMenuChange"
               />
-            </n-layout-sider>
-            <n-layout>
-              <n-layout-header bordered class="app-header">
+            </div>
+            
+            <!-- 右侧内容区 -->
+            <div class="main-content">
+              <div class="header">
                 <div class="header-left">
                   <n-button quaternary @click="collapsed = !collapsed">
                     <template #icon>
@@ -29,12 +32,13 @@
                 <div class="header-right">
                   <n-text depth="3">山海经视频制作全流程留痕系统</n-text>
                 </div>
-              </n-layout-header>
-              <n-layout-content class="app-content">
+              </div>
+              
+              <div class="content">
                 <router-view />
-              </n-layout-content>
-            </n-layout>
-          </n-layout>
+              </div>
+            </div>
+          </div>
         </n-notification-provider>
       </n-dialog-provider>
     </n-message-provider>
@@ -112,25 +116,35 @@ html, body {
   height: 100%;
 }
 
-.app-layout {
+.app-container {
   height: 100vh;
   display: flex;
+  overflow: hidden;
 }
 
-.app-layout .n-layout {
-  flex: 1;
-  overflow: hidden;
+.sidebar {
+  width: 200px;
+  background: #fff;
+  border-right: 1px solid #eee;
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.sidebar-collapsed {
+  width: 64px;
 }
 
 .logo-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 56px;
-  padding: 0 12px;
+  height: 64px;
+  padding: 0 16px;
   gap: 8px;
+  border-bottom: 1px solid #eee;
+  background: #fafafa;
 }
 
 .logo-icon {
@@ -145,14 +159,14 @@ html, body {
   overflow: hidden;
 }
 
-.app-header {
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
-  height: 56px;
-  flex-wrap: wrap;
-  gap: 12px;
+  height: 64px;
+  border-bottom: 1px solid #eee;
+  background: #fff;
   flex-shrink: 0;
 }
 
@@ -168,50 +182,61 @@ html, body {
   flex-wrap: wrap;
 }
 
-.app-content {
-  padding: 16px;
-  overflow-y: auto;
-  background: #f5f5f5;
-  height: calc(100vh - 56px);
-  box-sizing: border-box;
+.main-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
-  .app-layout {
+  .app-container {
     flex-direction: column;
   }
   
-  .app-layout .n-layout-sider {
+  .sidebar {
     width: 100% !important;
     height: auto !important;
+    border-right: none;
     border-bottom: 1px solid #eee;
   }
   
-  .app-layout .n-layout {
+  .sidebar-collapsed {
+    width: 100% !important;
+  }
+  
+  .main-content {
     flex: 1;
   }
   
-  .app-content {
-    height: calc(100vh - 56px - 48px);
-    padding: 12px;
+  .content {
+    height: calc(100vh - 64px - 64px);
+    padding: 16px;
   }
   
   .logo-wrapper {
-    height: 48px;
-    padding: 0 8px;
+    height: 56px;
+    padding: 0 12px;
   }
   
   .logo-icon {
-    font-size: 20px;
+    font-size: 22px;
   }
   
   .logo-text {
     font-size: 16px;
   }
   
-  .app-header {
-    height: 48px;
+  .header {
+    height: 56px;
     padding: 0 12px;
   }
 }

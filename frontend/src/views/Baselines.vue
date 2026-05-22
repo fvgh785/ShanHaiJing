@@ -253,9 +253,9 @@ onMounted(loadBaselines)
 
 <style scoped>
 .baselines-page {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 16px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -263,9 +263,10 @@ onMounted(loadBaselines)
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
   gap: 12px;
+  padding: 0 8px;
 }
 
 .page-title {
@@ -275,7 +276,7 @@ onMounted(loadBaselines)
 
 @media (max-width: 768px) {
   .baselines-page {
-    padding: 0 12px;
+    padding: 0 8px;
   }
   
   .page-header {
@@ -302,6 +303,13 @@ onMounted(loadBaselines)
   .baseline-grid {
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 20px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .baseline-grid {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 24px;
   }
 }
 

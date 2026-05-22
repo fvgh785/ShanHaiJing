@@ -241,9 +241,9 @@ onMounted(loadPlans)
 
 <style scoped>
 .plans-page {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 16px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -251,9 +251,10 @@ onMounted(loadPlans)
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
   gap: 12px;
+  padding: 0 8px;
 }
 
 .page-title {

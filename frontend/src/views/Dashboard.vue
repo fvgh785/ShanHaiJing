@@ -125,9 +125,9 @@ onMounted(async () => {
 
 <style scoped>
 .dashboard {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 16px;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -135,9 +135,10 @@ onMounted(async () => {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
+  padding: 0 8px;
 }
 
 .page-title {
@@ -171,11 +172,34 @@ onMounted(async () => {
   .side-col {
     margin-top: 16px;
   }
+  .dashboard-grid {
+    gap: 12px;
+  }
 }
 
 @media (max-width: 768px) {
   .dashboard-grid {
     gap: 12px;
+  }
+  
+  .stats-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .stat-item {
+    width: 100%;
+  }
+  
+  .task-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .task-item .n-button {
+    width: 100%;
+    align-self: stretch;
   }
 }
 
