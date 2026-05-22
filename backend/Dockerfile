@@ -14,6 +14,9 @@ COPY . .
 
 RUN mkdir -p instance backups logs harmony_baselines
 
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
 EXPOSE 5000
 
-CMD ["gunicorn", "-w", "1", "--threads", "2", "-b", "0.0.0.0:5000", "app:create_app()"]
+ENTRYPOINT ["/app/entrypoint.sh"]
