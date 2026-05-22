@@ -2,6 +2,8 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
+ENV FLASK_APP=app PYTHONUNBUFFERED=1
+
 # Install system dependencies for potential C extensions and sqlite3 CLI
 RUN apt-get update && apt-get install -y --no-install-recommends \
     sqlite3 \
