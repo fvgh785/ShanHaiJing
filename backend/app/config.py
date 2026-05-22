@@ -15,12 +15,10 @@ class Config:
     DEEPSEEK_API_KEY = os.environ.get('DEEPSEEK_API_KEY')
     DEEPSEEK_BASE_URL = os.environ.get('DEEPSEEK_BASE_URL', 'https://api.deepseek.com')
     DEEPSEEK_MODEL = os.environ.get('DEEPSEEK_MODEL', 'deepseek-chat')
-
-    HERMES_BASE_URL = os.environ.get('HERMES_BASE_URL', 'http://hermes:8000')
-    HERMES_TIMEOUT = int(os.environ.get('HERMES_TIMEOUT', '30'))
-    HERMES_MAX_RETRIES = int(os.environ.get('HERMES_MAX_RETRIES', '3'))
-    HERMES_CIRCUIT_BREAK_THRESHOLD = int(os.environ.get('HERMES_CIRCUIT_BREAK_THRESHOLD', '5'))
-    HERMES_CIRCUIT_BREAK_COOLDOWN = int(os.environ.get('HERMES_CIRCUIT_BREAK_COOLDOWN', '60'))
+    DEEPSEEK_TIMEOUT = int(os.environ.get('DEEPSEEK_TIMEOUT', '30'))
+    DEEPSEEK_MAX_RETRIES = int(os.environ.get('DEEPSEEK_MAX_RETRIES', '3'))
+    DEEPSEEK_CIRCUIT_BREAK_THRESHOLD = int(os.environ.get('DEEPSEEK_CIRCUIT_BREAK_THRESHOLD', '5'))
+    DEEPSEEK_CIRCUIT_BREAK_COOLDOWN = int(os.environ.get('DEEPSEEK_CIRCUIT_BREAK_COOLDOWN', '60'))
 
     BACKUP_DIR = os.environ.get(
         'BACKUP_DIR',

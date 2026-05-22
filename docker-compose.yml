@@ -22,25 +22,6 @@ services:
     networks:
       - shj_network
 
-  # ============================================================
-  # Hermes Agent - AI Agent Framework (pip install hermes-agent)
-  # ============================================================
-  hermes:
-    build:
-      context: ./hermes
-      dockerfile: Dockerfile
-    container_name: shj-hermes
-    volumes:
-      - ./hermes/skills:/root/.hermes/skills:ro
-      - hermes_memory:/root/.hermes/memory
-    env_file:
-      - .env
-    mem_limit: 512M
-    restart: unless-stopped
-    networks:
-      - shj_network
-    command: ["hermes", "serve", "--host", "0.0.0.0", "--port", "8000", "--low-memory"]
-
 # ==============================================================
 # Named Volumes
 # ==============================================================
@@ -50,8 +31,6 @@ volumes:
   backups:
     driver: local
   harmony_baselines:
-    driver: local
-  hermes_memory:
     driver: local
 
 # ==============================================================

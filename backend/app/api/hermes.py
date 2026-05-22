@@ -1,21 +1,36 @@
 import json
 from datetime import datetime
 from flask import Blueprint, request, jsonify, current_app
-from app.models import db, HermesLog
-from app.hermes_client import HermesClient, HermesException
+from app.models import db, HermesLog, HarmonyBaseline
+from app.deepseek_client import DeepSeekClient, DeepSeekException
 from app.hermes_client.retry import CircuitBreakerOpen
 
 hermes_bp = Blueprint("hermes", __name__)
 
+# Module-level client instance (lazily initialized)
+_client = None
+
 
 def _get_client():
-    return HermesClient(
-        base_url=current_app.config["HERMES_BASE_URL"],
-        timeout=current_app.config["HERMES_TIMEOUT"],
-        max_retries=current_app.config["HERMES_MAX_RETRIES"],
-        circuit_threshold=current_app.config["HERMES_CIRCUIT_BREAK_THRESHOLD"],
-        circuit_cooldown=current_app.config["HERMES_CIRCUIT_BREAK_COOLDOWN"],
-    )
+    global _client
+    if _client is None:
+        _client = DeepSeekClient(
+            api_key=current_app.config["DEEPSEEK_API_KEY"],
+            base_url=current_app.config["DEEPSEEK_BASE_URL"],
+            model=current_app.config["DEEPSEEK_MODEL"],
+            timeout=current_app.config["DEEPSEEK_TIMEOUT"],
+            max_retries=current_app.config["DEEPSEEK_MAX_RETRIES"],
+            circuit_threshold=current_app.config["DEEPSEEK_CIRCUIT_BREAK_THRESHOLD"],
+            circuit_cooldown=current_app.config["DEEPSEEK_CIRCUIT_BREAK_COOLDOWN"],
+        )
+    return _client
+
+
+def _get_baseline_content(baseline_id):
+    if not baseline_id:
+        return None
+    baseline = db.session.get(HarmonyBaseline, baseline_id)
+    return baseline.prompt_template if baseline else None
 
 
 @hermes_bp.route("/generate-prompt", methods=["POST"])
@@ -37,11 +52,12 @@ def generate_prompt():
 
     try:
         client = _get_client()
+        baseline_content = _get_baseline_content(baseline_id)
         result = client.generate_prompt(
             creature_name=creature_name,
             juan=juan,
             style_tag=style_tag,
-            baseline_id=baseline_id,
+            baseline_content=baseline_content,
         )
         duration_ms = int((datetime.utcnow() - start_time).total_seconds() * 1000)
 
@@ -78,7 +94,7 @@ def generate_prompt():
         )
         return jsonify({"error": {"code": "CIRCUIT_OPEN", "message": error_msg}}), 503
 
-    except HermesException as e:
+    except DeepSeekException as e:
         duration_ms = int((datetime.utcnow() - start_time).total_seconds() * 1000)
         log = HermesLog(
             record_id=record_id,
@@ -96,7 +112,7 @@ def generate_prompt():
 
         return jsonify({
             "error": {
-                "code": "HERMES_ERROR",
+                "code": "DEEPSEEK_ERROR",
                 "message": "AI service temporarily unavailable, please try again or enter prompts manually",
             },
             "log_id": log.id,
@@ -120,9 +136,10 @@ def review_style():
 
     try:
         client = _get_client()
+        baseline_content = _get_baseline_content(baseline_id)
         result = client.review_style(
             generated_prompt=generated_prompt,
-            baseline_id=baseline_id,
+            baseline_content=baseline_content,
         )
         duration_ms = int((datetime.utcnow() - start_time).total_seconds() * 1000)
 
@@ -142,6 +159,7 @@ def review_style():
 
         return jsonify({
             "overall_score": result.get("overall_score"),
+            "grade": result.get("grade"),
             "dimension_scores": result.get("dimension_scores", {}),
             "suggestions": result.get("suggestions"),
             "log_id": log.id,
@@ -155,7 +173,7 @@ def review_style():
         )
         return jsonify({"error": {"code": "CIRCUIT_OPEN", "message": error_msg}}), 503
 
-    except HermesException as e:
+    except DeepSeekException as e:
         duration_ms = int((datetime.utcnow() - start_time).total_seconds() * 1000)
         log = HermesLog(
             record_id=record_id,
@@ -169,7 +187,7 @@ def review_style():
 
         return jsonify({
             "error": {
-                "code": "HERMES_ERROR",
+                "code": "DEEPSEEK_ERROR",
                 "message": "AI service temporarily unavailable, please try again or enter prompts manually",
             },
             "log_id": log.id,

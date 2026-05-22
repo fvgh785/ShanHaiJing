@@ -57,16 +57,15 @@ def create_app(config_class=Config):
 
     @app.route("/api/v1/health")
     def health():
-        hermes_status = "unknown"
-        try:
-            import requests
-            resp = requests.get(f"{app.config['HERMES_BASE_URL']}/health", timeout=5)
-            hermes_status = "ok" if resp.ok else "degraded"
-        except Exception:
-            hermes_status = "unavailable"
+        deepseek_status = "unknown"
+        api_key = app.config.get("DEEPSEEK_API_KEY")
+        if api_key:
+            deepseek_status = "configured"
+        else:
+            deepseek_status = "unconfigured"
         return {
             "status": "ok",
-            "hermes": hermes_status,
+            "deepseek": deepseek_status,
         }
 
     return app

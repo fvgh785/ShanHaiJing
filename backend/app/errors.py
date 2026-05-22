@@ -1,5 +1,4 @@
 from flask import jsonify
-from app.hermes_client.retry import CircuitBreakerOpen
 
 
 def register_error_handlers(app):

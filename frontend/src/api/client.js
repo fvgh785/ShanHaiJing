@@ -17,7 +17,7 @@ client.interceptors.response.use(
 
       if (status === 503) {
         window.dispatchEvent(new CustomEvent('api-notification', {
-          detail: { type: 'warning', title: 'AI 服务暂不可用', content: 'Hermes Agent 当前无法响应，请稍后重试' }
+          detail: { type: 'warning', title: 'AI 服务暂不可用', content: 'DeepSeek API 当前无法响应，请稍后重试或手动输入提示词' }
         }))
       }
 
