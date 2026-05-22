@@ -1,0 +1,62 @@
+version: "3.9"
+
+services:
+  # ============================================================
+  # Flask - REST API Backend (gunicorn)
+  # ============================================================
+  flask:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: shj-flask
+    ports:
+      - "127.0.0.1:5000:5000"   # only accessible from host nginx
+    volumes:
+      - db_data:/app/instance
+      - backups:/app/backups
+      - harmony_baselines:/app/harmony_baselines
+    env_file:
+      - .env
+    mem_limit: 256M
+    restart: unless-stopped
+    networks:
+      - shj_network
+
+  # ============================================================
+  # Hermes Agent - AI Agent Framework (pip install hermes-agent)
+  # ============================================================
+  hermes:
+    build:
+      context: ./hermes
+      dockerfile: Dockerfile
+    container_name: shj-hermes
+    volumes:
+      - ./hermes/skills:/root/.hermes/skills:ro
+      - hermes_memory:/root/.hermes/memory
+    env_file:
+      - .env
+    mem_limit: 512M
+    restart: unless-stopped
+    networks:
+      - shj_network
+    command: ["hermes", "serve", "--host", "0.0.0.0", "--port", "8000", "--low-memory"]
+
+# ==============================================================
+# Named Volumes
+# ==============================================================
+volumes:
+  db_data:
+    driver: local
+  backups:
+    driver: local
+  harmony_baselines:
+    driver: local
+  hermes_memory:
+    driver: local
+
+# ==============================================================
+# Network
+# ==============================================================
+networks:
+  shj_network:
+    driver: bridge

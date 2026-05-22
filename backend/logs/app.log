@@ -1,0 +1,230 @@
+[2026-05-21 22:27:11,961] INFO in __init__: ShanHaiJing backend starting
+[2026-05-21 22:27:14,687] ERROR in app: Exception on /api/v1/plans [GET]
+Traceback (most recent call last):
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: plans
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\work_soft\Python38\lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\workspaces\workspaces-AI\ShanHaiJing\backend\app\api\plans.py", line 32, in list_plans
+    plans = query.order_by(Plan.priority.desc(), Plan.planned_date.asc()).all()
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\query.py", line 2711, in all
+    return self._iter().all()  # type: ignore
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: plans
+[SQL: SELECT plans.id AS plans_id, plans.creature AS plans_creature, plans.juan AS plans_juan, plans.priority AS plans_priority, plans.planned_date AS plans_planned_date, plans.recommended_tool AS plans_recommended_tool, plans.status AS plans_status, plans.created_at AS plans_created_at, plans.updated_at AS plans_updated_at 
+FROM plans ORDER BY plans.priority DESC, plans.planned_date ASC]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2026-05-21 22:27:14,714] ERROR in app: Exception on /api/v1/records [GET]
+Traceback (most recent call last):
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: records
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\work_soft\Python38\lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\workspaces\workspaces-AI\ShanHaiJing\backend\app\api\records.py", line 68, in list_records
+    pagination = query.order_by(Record.work_date.desc(), Record.created_at.desc()).paginate(
+  File "D:\work_soft\Python38\lib\site-packages\flask_sqlalchemy\query.py", line 98, in paginate
+    return QueryPagination(
+  File "D:\work_soft\Python38\lib\site-packages\flask_sqlalchemy\pagination.py", line 72, in __init__
+    items = self._query_items()
+  File "D:\work_soft\Python38\lib\site-packages\flask_sqlalchemy\pagination.py", line 358, in _query_items
+    out = query.limit(self.per_page).offset(self._query_offset).all()
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\query.py", line 2711, in all
+    return self._iter().all()  # type: ignore
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: records
+[SQL: SELECT records.id AS records_id, records.plan_id AS records_plan_id, records.work_date AS records_work_date, records.creature_name AS records_creature_name, records.tools_used AS records_tools_used, records.baseline_id_used AS records_baseline_id_used, records.prompt_image AS records_prompt_image, records.prompt_video AS records_prompt_video, records.negative_prompt AS records_negative_prompt, records.style_review_score AS records_style_review_score, records.style_review_suggestions AS records_style_review_suggestions, records.points_consumed AS records_points_consumed, records.output_url AS records_output_url, records.intermediate_urls AS records_intermediate_urls, records.notes AS records_notes, records.status AS records_status, records.hermes_skill_version AS records_hermes_skill_version, records.created_at AS records_created_at, records.updated_at AS records_updated_at 
+FROM records ORDER BY records.work_date DESC, records.created_at DESC
+ LIMIT ? OFFSET ?]
+[parameters: (20, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2026-05-21 22:27:14,725] ERROR in app: Exception on /api/v1/baselines [GET]
+Traceback (most recent call last):
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: harmony_baselines
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\work_soft\Python38\lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\workspaces\workspaces-AI\ShanHaiJing\backend\app\api\baselines.py", line 76, in list_baselines
+    baselines = query.order_by(HarmonyBaseline.created_at.desc()).all()
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\query.py", line 2711, in all
+    return self._iter().all()  # type: ignore
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: harmony_baselines
+[SQL: SELECT harmony_baselines.id AS harmony_baselines_id, harmony_baselines.name AS harmony_baselines_name, harmony_baselines.version AS harmony_baselines_version, harmony_baselines.tool_type AS harmony_baselines_tool_type, harmony_baselines.style_tags AS harmony_baselines_style_tags, harmony_baselines.prompt_template AS harmony_baselines_prompt_template, harmony_baselines.file_path AS harmony_baselines_file_path, harmony_baselines.is_active AS harmony_baselines_is_active, harmony_baselines.previous_id AS harmony_baselines_previous_id, harmony_baselines.source_record_id AS harmony_baselines_source_record_id, harmony_baselines.rating AS harmony_baselines_rating, harmony_baselines.usage_count AS harmony_baselines_usage_count, harmony_baselines.created_at AS harmony_baselines_created_at 
+FROM harmony_baselines ORDER BY harmony_baselines.created_at DESC]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2026-05-21 22:27:14,733] ERROR in app: Exception on /api/v1/plans/999 [GET]
+Traceback (most recent call last):
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: plans
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\work_soft\Python38\lib\site-packages\flask_cors\extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\work_soft\Python38\lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "D:\workspaces\workspaces-AI\ShanHaiJing\backend\app\api\plans.py", line 88, in get_plan
+    plan = db.session.get(Plan, plan_id)
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\scoping.py", line 1044, in get
+    return self._proxied.get(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\session.py", line 3680, in get
+    return self._get_impl(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\session.py", line 3859, in _get_impl
+    return db_load_fn(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\loading.py", line 695, in load_on_pk_identity
+    session.execute(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\session.py", line 2351, in execute
+    return self._execute_internal(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\sql\elements.py", line 527, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "D:\work_soft\Python38\lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: plans
+[SQL: SELECT plans.id AS plans_id, plans.creature AS plans_creature, plans.juan AS plans_juan, plans.priority AS plans_priority, plans.planned_date AS plans_planned_date, plans.recommended_tool AS plans_recommended_tool, plans.status AS plans_status, plans.created_at AS plans_created_at, plans.updated_at AS plans_updated_at 
+FROM plans 
+WHERE plans.id = ?]
+[parameters: (999,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2026-05-21 22:27:52,618] INFO in __init__: ShanHaiJing backend starting
+[2026-05-22 09:10:06,066] INFO in __init__: ShanHaiJing backend starting
+[2026-05-22 09:15:30,217] INFO in __init__: ShanHaiJing backend starting

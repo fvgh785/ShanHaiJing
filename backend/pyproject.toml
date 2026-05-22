@@ -1,0 +1,19 @@
+[project]
+name = "shanhaijing"
+version = "0.1.0"
+description = "山海经视频制作全流程留痕系统"
+requires-python = ">=3.11"
+dependencies = [
+    "flask>=3.0,<4.0",
+    "flask-sqlalchemy>=3.1,<4.0",
+    "flask-migrate>=4.0,<5.0",
+    "flask-cors>=4.0,<5.0",
+    "requests>=2.31,<3.0",
+    "gunicorn>=21.2,<22.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-flask>=1.3",
+]
