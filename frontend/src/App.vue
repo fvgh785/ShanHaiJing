@@ -1,37 +1,43 @@
 <template>
   <n-config-provider :locale="zhCN" :date-locale="dateZhCN" :theme-overrides="themeOverrides">
-    <n-layout class="app-layout">
-      <n-layout-sider bordered collapse-mode="width" :collapsed-width="64" :width="200" :collapsed="collapsed">
-        <div class="logo-wrapper">
-          <div class="logo-icon">🐉</div>
-          <span v-show="!collapsed" class="logo-text">山海经</span>
-        </div>
-        <n-menu
-          :value="activeKey"
-          :collapsed="collapsed"
-          :collapsed-width="64"
-          :options="menuOptions"
-          @update:value="handleMenuChange"
-        />
-      </n-layout-sider>
-      <n-layout>
-        <n-layout-header bordered class="app-header">
-          <div class="header-left">
-            <n-button quaternary @click="collapsed = !collapsed">
-              <template #icon>
-                <n-icon><MenuOutline /></n-icon>
-              </template>
-            </n-button>
-          </div>
-          <div class="header-right">
-            <n-text depth="3">山海经视频制作全流程留痕系统</n-text>
-          </div>
-        </n-layout-header>
-        <n-layout-content class="app-content">
-          <router-view />
-        </n-layout-content>
-      </n-layout>
-    </n-layout>
+    <n-message-provider>
+      <n-dialog-provider>
+        <n-notification-provider>
+          <n-layout class="app-layout">
+            <n-layout-sider bordered collapse-mode="width" :collapsed-width="64" :width="200" :collapsed="collapsed">
+              <div class="logo-wrapper">
+                <div class="logo-icon">🐉</div>
+                <span v-show="!collapsed" class="logo-text">山海经</span>
+              </div>
+              <n-menu
+                :value="activeKey"
+                :collapsed="collapsed"
+                :collapsed-width="64"
+                :options="menuOptions"
+                @update:value="handleMenuChange"
+              />
+            </n-layout-sider>
+            <n-layout>
+              <n-layout-header bordered class="app-header">
+                <div class="header-left">
+                  <n-button quaternary @click="collapsed = !collapsed">
+                    <template #icon>
+                      <n-icon><MenuOutline /></n-icon>
+                    </template>
+                  </n-button>
+                </div>
+                <div class="header-right">
+                  <n-text depth="3">山海经视频制作全流程留痕系统</n-text>
+                </div>
+              </n-layout-header>
+              <n-layout-content class="app-content">
+                <router-view />
+              </n-layout-content>
+            </n-layout>
+          </n-layout>
+        </n-notification-provider>
+      </n-dialog-provider>
+    </n-message-provider>
   </n-config-provider>
 </template>
 
