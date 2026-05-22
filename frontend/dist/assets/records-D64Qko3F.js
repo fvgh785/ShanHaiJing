@@ -1,0 +1,1 @@
+import{c as e}from"./_plugin-vue_export-helper-DilTws6G.js";function o(r={}){return e.get("/api/v1/records",{params:r})}function n(r){return e.get(`/api/v1/records/${r}`)}function a(r){return e.post("/api/v1/records",r)}function s(r,t){return e.put(`/api/v1/records/${r}`,t)}export{o as a,a as c,n as f,s as u};
